@@ -1,49 +1,52 @@
+import org.jetbrains.annotations.Contract;
+
 import java.util.ArrayList;
 
 
 public class TestClass {
-    static String s;
-    static String s1;
-    String n,n1;
+    private static String student;
+    private static String student2;
+    String n, n1;
     static String titleStudent = "MIDDLE";
-    static ArrayList<String> list = new ArrayList<String>();
-    static String titletext = "This immediately cuts the maximum number of transactions per second by the factor of 10 as well (limited thread-pool, limited CPU resources).";
+    private static ArrayList<String> list = new ArrayList<String>();
+    static String titleText = "This immediately cuts the maximum number of transactions per second by the factor" +
+            "of 10 as well (limited thread-pool, limited CPU resources).";
 
-    public static void main(String args[])
-    {
+    public static void main(String args[]) {
         TestClass cl = new TestClass("Igor Petrov", "Ivan Ivanov");
-        SortGuys();
-        System.out.println("Compare result: "  + isTitleEquals(s, s1));
+        sortGuys();
+        System.out.println("Compare result: " + isTitleEquals(student, student2));
     }
 
-    //s - student; s1 - student2
-    public TestClass(String s,String s1 ) {
-        this.s = s;
-        this.s1 = s1;
+    // s - student; s1 - student2
+    private TestClass(String s, String s1) {
+        TestClass.student = s;
+        TestClass.student2 = s1;
         list.add(s);
         list.add(s1);
     }
 
-    public static void SortGuys()               //сортировка item
-    {
-        ArrayList<String> SortedList = new ArrayList<String>();
+    //sorting item
+    private static void sortGuys() {
+        ArrayList<String> sortedList = new ArrayList<String>();
 
-        System.out.println("Сортировка завершена успешно! Студентов в списке:" + list.size() );
-        for(int i = 0;i<list.size(); i++) {
-            System.out.println(list.get(i));
+        System.out.println("Сортировка завершена успешно! Студентов в списке:" + list.size());
+        for (String aList : list) {
+            System.out.println(aList);
         }
     }
 
-    public boolean postRejected(final String postText) {
+    public boolean isPostRejected(final String postText) {
         //some logic
         return false;
     }
 
     public void selectRejectedRadioButtonFromMainPageInFooterArea(final String postText) {
-       //TODO: need to implement
+        //TODO: need to implement
     }
 
-    public static boolean isTitleEquals(final String s, final String s1) {
+    @Contract(pure = true)
+    private static boolean isTitleEquals(final String s, final String s1) {
         return s.equals(s1);
     }
 
